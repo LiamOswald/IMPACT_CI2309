@@ -20,4 +20,9 @@ mkdir -p $(pwd)/caravel_venv
 python3 -m venv $(pwd)/caravel_venv
 source $(pwd)/caravel_venv/bin/activate
 
+python3 -m pip install Click
+python3 -m pip install pyyaml
+
 make setup
+make openlane
+make pdk-with-volare
