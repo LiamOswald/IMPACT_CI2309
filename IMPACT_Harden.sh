@@ -21,4 +21,4 @@ python3 -m venv $(pwd)/caravel_venv
 source $(pwd)/caravel_venv/bin/activate
 
 #make user_proj_example
-make user_proj_example
+make user_proj_IMPACT_HEAD

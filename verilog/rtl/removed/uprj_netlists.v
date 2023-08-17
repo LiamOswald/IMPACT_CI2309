@@ -19,23 +19,10 @@
 
 `ifdef GL
     // Assume default net type to be wire because GL netlists don't have the wire definitions
-    //these functions were changed by LiamOswald
     `default_nettype wire
     `include "gl/user_project_wrapper.v"
-    `include "gl/user_proj_IMPACT_HEAD.v"
-    `include "gl/BankWordDecoder.v"
-    `include "gl/data_in_decoder.v"
-    `include "gl/SramBank00.v"
-    `include "gl/FourBanksMux.v"
-    `include "gl/user_defines.v"
-    
+    `include "gl/user_proj_example.v"
 `else
-    `include "user_proj_IMPACT_wrapper.v"
-    `include "user_proj_IMPACT_HEAD.v"
-    `include "BankWordDecoder.v"
-    `include "data_in_decoder.v"
-    `include "SramBank00.v"
-    `include "FourBanksMux.v"
-    `include "user_defines.v"
-   
+    `include "user_project_wrapper.v"
+    `include "user_proj_example.v"
 `endif

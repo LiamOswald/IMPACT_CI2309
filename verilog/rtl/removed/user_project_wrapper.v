@@ -43,63 +43,81 @@ module user_project_wrapper #(
     inout vssd2,	// User area 2 digital ground
 `endif
 
-//IMPACT defined I/O via the GPIO pins, pin layout follows LiamOswalds design 03/22/2023
+    // Wishbone Slave ports (WB MI A)
+    input wb_clk_i,
+    input wb_rst_i,
+    input wbs_stb_i,
+    input wbs_cyc_i,
+    input wbs_we_i,
+    input [3:0] wbs_sel_i,
+    input [31:0] wbs_dat_i,
+    input [31:0] wbs_adr_i,
+    output wbs_ack_o,
+    output [31:0] wbs_dat_o,
 
-// IOs
-//input [7:0] Data_In //SRAM byte input			GPIO pins 0-7
-//output [7:0] Data_Out //SRAM byte output		GPIO pins 8-15
-//input [9:0] Word_Select	//Select word from SRAM bank	GPIO pins 16-25
-//input [1:0] Bank_Select //Select SRAM Bank		GPIO pins 26 & 27
-//input [1:0] Byte_Select //Select Byte from Word		GPIO pins 28 & 29
-//input WriteEnable	//SRAM Write Enable signal	GPIO pin 30
-//input ReadEnable	//SRAM Read Enable Signal	GPIO pin 31
-//input AnalogVCC		//VCC control for Bank #4	GPIO pin 32
-//input [3:0] Truncation_Select	//Truncation controller	GPIO Pins 33-36
-//input Project_Clock	//User Project Clock 		GPIO Pin 37
+    // Logic Analyzer Signals
+    input  [127:0] la_data_in,
+    output [127:0] la_data_out,
+    input  [127:0] la_oenb,
 
+    // IOs
+    input  [`MPRJ_IO_PADS-1:0] io_in,
+    output [`MPRJ_IO_PADS-1:0] io_out,
+    output [`MPRJ_IO_PADS-1:0] io_oeb,
 
-input [`MPRJ_IO_PADS-1:0] io_in,
-output [`MPRJ_IO_PADS-1:0] io_out,
-output [`MPRJ_IO_PADS-1:0] io_oeb,
+    // Analog (direct connection to GPIO pad---use with caution)
+    // Note that analog I/O is not available on the 7 lowest-numbered
+    // GPIO pads, and so the analog_io indexing is offset from the
+    // GPIO indexing by 7 (also upper 2 GPIOs do not have analog_io).
+    inout [`MPRJ_IO_PADS-10:0] analog_io,
 
+    // Independent clock (on independent integer divider)
+    input   user_clock2,
 
-//assign pin 31 to be analog input
-inout [`MPRJ_IO_PADS-6:`MPRJ_IO_PADS-6] analog_io,
-
-
-
-
-//WishBone Unused for IMPACT design -LiamOswald 03/22/2023
- 
-//Logic Analyzer Unused for IMPACT design -LiamOswald 03/22/2023
-
+    // User maskable interrupt signals
+    output [2:0] user_irq
 );
 
 /*--------------------------------------*/
 /* User project is instantiated  here   */
 /*--------------------------------------*/
 
-user_proj_IMPACT_HEAD mprj (
+user_proj_example mprj (
 `ifdef USE_POWER_PINS
 	.vccd1(vccd1),	// User area 1 1.8V power
 	.vssd1(vssd1),	// User area 1 digital ground
 `endif
 
+    .wb_clk_i(wb_clk_i),
+    .wb_rst_i(wb_rst_i),
+
+    // MGMT SoC Wishbone Slave
+
+    .wbs_cyc_i(wbs_cyc_i),
+    .wbs_stb_i(wbs_stb_i),
+    .wbs_we_i(wbs_we_i),
+    .wbs_sel_i(wbs_sel_i),
+    .wbs_adr_i(wbs_adr_i),
+    .wbs_dat_i(wbs_dat_i),
+    .wbs_ack_o(wbs_ack_o),
+    .wbs_dat_o(wbs_dat_o),
+
+    // Logic Analyzer
+
+    .la_data_in(la_data_in),
+    .la_data_out(la_data_out),
+    .la_oenb (la_oenb),
+
     // IO Pads
-    
-   
-    .Data_In(io_in[7:0]),			//SRAM byte input		GPIO pins 0-7
-    .Data_Out(io_out[15:8]), 			//SRAM byte output		GPIO pins 8-15
-    .Word_Select(io_in[25:16]), 		//Select word from SRAM bank	GPIO pins 16-25
-    .Bank_Select(io_in[27:26]),			//Select SRAM Bank		GPIO pins 26 & 27
-    .Byte_Select(io_in[29:28]),			//Select Byte from Word		GPIO pins 28 & 29
-    .WriteEnable(io_in[30]),			//SRAM Write Enable signal	GPIO pin 30
-    .ReadEnable(io_in[31]),			//SRAM Read Enable Signal	GPIO pin 31
-    .AnalogVCC(analog_io),			//VCC control for Bank #4	GPIO pin 32
-    .Truncation_Select(io_in[36:33]),		//Truncation controller		GPIO Pins 33-36
-    .Project_Clock(io_in[37])			//User Project Clock 		GPIO Pin 37	
 
+    .io_in ({io_in[37:30],io_in[7:0]}),
+    .io_out({io_out[37:30],io_out[7:0]}),
+    .io_oeb({io_oeb[37:30],io_oeb[7:0]}),
 
+    // IRQ
+    .irq(user_irq)
 );
 
 endmodule	// user_project_wrapper
+
+`default_nettype wire

@@ -30,10 +30,9 @@
 // Analog pads are only used by the "caravan" module and associated
 // modules such as user_analog_project_wrapper and chip_io_alt.
 
-`define ANALOG_PADS_1 5
-`define ANALOG_PADS_2 6
+`define AnalogVCC 32
 
-`define ANALOG_PADS (`ANALOG_PADS_1 + `ANALOG_PADS_2)
+`define ANALOG_PADS (`AnalogVCC)
 
 // Size of soc_mem_synth
 
