@@ -5,6 +5,8 @@
         "dir::../../verilog/rtl/defines.v",
         "dir::../../verilog/rtl/user_proj_IMPACT_HEAD.v"
     ],
+    "EXTRA_LEFS": "dir::macros/lef/*.lef",
+    "EXTRA_GDS_FILES": "dir::macros/gds/*.gds",
     "CLOCK_PERIOD": 25,
     "CLOCK_PORT": "wb_clk_i",
     "CLOCK_NET": "user_proj_IMPACT_HEAD.clk",
