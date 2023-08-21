@@ -190,10 +190,6 @@ end
 
 
 
-//################################################
-//Creates the Four Word Decoders Instences for the Four Memory Banks
-//################################################
-
 // BANK 01 WORDLINE Decoder
 BankWordDecoder wordDecoder_Bank01 (
 	.sel(Word_Select),
