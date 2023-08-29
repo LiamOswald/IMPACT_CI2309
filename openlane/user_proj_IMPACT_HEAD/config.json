@@ -7,6 +7,7 @@
     ],
     "EXTRA_LEFS": "dir::macros/lef/*.lef",
     "EXTRA_GDS_FILES": "dir::macros/gds/*.gds",
+    "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "CLOCK_PERIOD": 25,
     "CLOCK_PORT": "wb_clk_i",
     "CLOCK_NET": "user_proj_IMPACT_HEAD.clk",
@@ -25,10 +26,10 @@
     "MAGIC_DEF_LABELS": 0,
     "SYNTH_BUFFERING": 0,
     "VDD_NETS": [
-        "vcc"
+        "vccd1"
     ],
     "GND_NETS": [
-        "vdd"
+        "vssd1"
     ],
     "IO_SYNC": 0,
     "BASE_SDC_FILE": "dir::base_user_proj_IMPACT_HEAD.sdc",
