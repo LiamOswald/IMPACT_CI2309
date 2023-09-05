@@ -1,4 +1,3 @@
-`include "BankWordDecoder.v"
 module IMPACTSram (
 
 `ifdef USE_POWER_PINS
@@ -20,25 +19,19 @@ module IMPACTSram (
     input PRE,
     input ReadEn,
     input WriteEn,
-    input [9:0] Address,
+    input [1023:0] Address,
     input [31:0] DataIn,
     output [31:0] DataOut
 
 );
 
 wire [1023:0] WL;
+assign WL = Address;
 
 //wire [31:0] WL_Bank01;
 //################################################
 //Creates the Four Word Decoders Instences for the Four Memory Banks
 //################################################
-
-BankWordDecoder Bank01_Decoder(
-	.sel(Address [9:0]),
-	.address(WL)
-);
-
-
 
 //Bank01 SRAM Block
 full_sram full_sram(
