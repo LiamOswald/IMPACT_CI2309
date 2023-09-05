@@ -1,8 +1,8 @@
-CARAVEL_ROOT: /home/impact/Desktop/IMPACT_CI2309/caravel
-MCW_ROOT: /home/impact/Desktop/IMPACT_CI2309/mgmt_core_wrapper
+CARAVEL_ROOT: /home/impact/Desktop/temp/IMPACT_CI2309/caravel
+MCW_ROOT: /home/impact/Desktop/temp/IMPACT_CI2309/mgmt_core_wrapper
 PDK: sky130A
-PDK_ROOT: /home/impact/Desktop/IMPACT_CI2309/dependencies/pdks
-USER_PROJECT_ROOT: /home/impact/Desktop/IMPACT_CI2309
+PDK_ROOT: /home/impact/Desktop/temp/IMPACT_CI2309/dependencies/pdks
+USER_PROJECT_ROOT: /home/impact/Desktop/temp/IMPACT_CI2309
 caravan: false
 clk: 25
 emailto:

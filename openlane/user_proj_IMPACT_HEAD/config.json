@@ -8,6 +8,7 @@
     "EXTRA_LEFS": "dir::macros/lef/*.lef",
     "EXTRA_GDS_FILES": "dir::macros/gds/*.gds",
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
+    "POWER_ROUTING": true,
     "CLOCK_PERIOD": 25,
     "CLOCK_PORT": "wb_clk_i",
     "CLOCK_NET": "user_proj_IMPACT_HEAD.clk",

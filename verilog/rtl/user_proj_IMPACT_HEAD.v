@@ -14,10 +14,10 @@
 
 module user_proj_IMPACT_HEAD (
 
-//`ifdef USE_POWER_PINS
+`ifdef USE_POWER_PINS
     inout vccd1, // User area 1 1.8V supply
     inout vssd1, // User area 1 digital ground
-//`endif
+`endif
 
 
 
@@ -49,11 +49,11 @@ module user_proj_IMPACT_HEAD (
 //Bank01 SRAM Block
 (* blackbox *)
 IMPACTSram bank01(
-//`ifdef USE_POWER_PINS
+`ifdef USE_POWER_PINS
 
 	.vccd1(vccd1),	// User area 1 1.8V power
 	.vssd1(vssd1),	// User area 1 digital ground
-//`endif
+`endif
 
 .WL0(East [0]),
 .WL1(East [1]),
@@ -162,10 +162,10 @@ endmodule
 (* blackbox *)
 module IMPACTSram (
 
-//`ifdef USE_POWER_PINS
+`ifdef USE_POWER_PINS
 	inout vccd1,	// User area 1 1.8V power
 	inout vssd1,	// User area 1 digital ground
-//`endif
+`endif
 
     input WL0, WL1, WL2, WL3, WL4, WL5, WL6, WL7, WL8, WL9, WL10, WL11, WL12, WL13, WL14, WL15,
     input WL16, WL17, WL18, WL19, WL20, WL21, WL22, WL23, WL24, WL25, WL26, WL27, WL28, WL29, WL30, WL31,
