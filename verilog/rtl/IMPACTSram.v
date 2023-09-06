@@ -1,8 +1,8 @@
 module IMPACTSram (
 
 `ifdef USE_POWER_PINS
-    inout vccd2,	// User area 2 1.8v supply
-    inout vssd2,	// User area 2 digital ground
+    inout vccd1,	// User area 2 1.8v supply
+    inout vssd1,	// User area 2 digital ground
 `endif
 
 
@@ -36,8 +36,8 @@ assign WL = Address;
 //Bank01 SRAM Block
 full_sram full_sram(
 `ifdef USE_POWER_PINS
-	.vccd2(vccd2),	// User area 1 1.8V power
-	.vssd2(vssd2),	// User area 1 digital ground
+	.vccd1(vccd1),	// User area 1 1.8V power
+	.vssd1(vssd1),	// User area 1 digital ground
 `endif
 
 .PRE(PRE),
@@ -1145,8 +1145,8 @@ endmodule
 module full_sram (
 
 `ifdef USE_POWER_PINS
-	inout vccd2,	// User area 1 1.8V power
-	inout vssd2,	// User area 1 digital ground
+	inout vccd1,	// User area 1 1.8V power
+	inout vssd1,	// User area 1 digital ground
 `endif
 
 input PRE,
