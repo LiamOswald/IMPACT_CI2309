@@ -13,9 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-module data_in_decoder #(
-    parameter BITS = 32
-)(
+module data_in_decoder (
 		input [7:0] data_in,
                 input [1:0] sel,
                 output reg [31:0] data_out
