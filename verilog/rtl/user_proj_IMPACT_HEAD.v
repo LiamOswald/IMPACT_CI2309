@@ -40,12 +40,10 @@ reg [31:0] Data_Register;
 wire [7:0] Data_into_Register;
 			
 wire [1023:0] WordDecoder_Bank01;
-reg read_enable_Bank01;
-reg write_enable_Bank01;
 wire [31:0] Bank01_Output_ToMux;
 
 wire Bank01_PRE;
-assign Bank01_PRE = 1'b1;
+assign Bank01_PRE = 1'b0;
 
 /*
 //this might be outdated? -Liam
@@ -73,6 +71,7 @@ end
 
 // BANK 01 WORDLINE Decoder
 BankWordDecoder wordDecoder_Bank01 (
+	.clk(clk),
 	.sel(Word_Select),
 	.address(WordDecoder_Bank01)
 );
@@ -87,8 +86,8 @@ BankWordDecoder wordDecoder_Bank01 (
 IMPACTSram bank01(
 	
 	.PRE(Bank01_PRE),
-	.ReadEn(read_enable_Bank01),
-	.WriteEn(write_enable_Bank01),
+	.ReadEn(ReadEnable),
+	.WriteEn(WriteEnable),
 	.Address(WordDecoder_Bank01), //WL
 	.DataOut(Bank01_Output_ToMux), //BL
 	.DataIn(Data_Register)
@@ -98,6 +97,7 @@ IMPACTSram bank01(
 
 //DATA OUT MUX! this mux takes 4 32bit values from the 4 memory banks, and mux's the output down to a single byte ready for the output pins
 FourBanksMux Data_out_Mux(
+		.clk(clk),
 		.Bank01_Reading(Bank01_Output_ToMux),
 		.Bank02_Reading(Bank01_Output_ToMux),	//redundancy for now
 		.Bank03_Reading(Bank01_Output_ToMux),	//redundancy for now
@@ -108,6 +108,7 @@ FourBanksMux Data_out_Mux(
 );
 
 data_in_decoder DataIn_Decoder(
+	.clk(clk),
 	.data_in(Data_In),
 	.sel(Byte_Select),
 	.data_out(Data_Register)

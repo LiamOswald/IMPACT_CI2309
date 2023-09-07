@@ -21,14 +21,15 @@ module BankWordDecoder #(
     inout vccd1,	// User area 1 1.8V supply
     inout vssd1,	// User area 1 digital ground
 `endif
+	input clk,
 	input [9:0] sel,
 	output reg [1023:0] address
 
 );
 
     integer i;
-    always@(sel) begin
-        for(i=0;i<1023;i=i+1) begin
+    always@(posedge clk) begin
+        for(i=0;i<1024;i=i+1) begin
             address[i]=(sel==i)?1'b1:1'b0;
         end
     end

@@ -15,8 +15,7 @@
     	"IMPACTSram",
     	"BankWordDecoder"
     ],
-    
-    "QUIT_ON_SYNTH_CHECKS": 0,
+
     
     "CLOCK_PERIOD": 25,
     "CLOCK_PORT": "wb_clk_i",
