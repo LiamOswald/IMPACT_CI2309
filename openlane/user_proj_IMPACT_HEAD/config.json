@@ -11,10 +11,13 @@
     ],
     "VERILOG_FILES_BLACKBOX": "dir::../../verilog/rtl/IMPACTSram.v",
     
-    "RSZ_DON'T_TOUCH": [
+    "RSZ_DON'T_TOUCH_RX": [
     	"IMPACTSram",
     	"BankWordDecoder"
     ],
+    
+    "RSZ_MULTICORNER_LIB": 0,
+    "RUN_LVS": 0,
 
     
     "CLOCK_PERIOD": 25,
@@ -56,7 +59,7 @@
     "RUN_CVC": 1,
     "pdk::sky130*": {
         "FP_CORE_UTIL": 45,
-        "RT_MAX_LAYER": "met4",
+        "RT_MAX_LAYER": "met3",
         "scl::sky130_fd_sc_hd": {
             "CLOCK_PERIOD": 25
         },

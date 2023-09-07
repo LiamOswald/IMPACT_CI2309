@@ -45,24 +45,6 @@ wire [31:0] Bank01_Output_ToMux;
 wire Bank01_PRE;
 assign Bank01_PRE = 1'b0;
 
-/*
-//this might be outdated? -Liam
-//Wait for Flash to finish configuring ports
-always @(posedge clk) begin
-        if (rst) begin
-            //Data_Out <= 8'h00;
-           // ready <= 0;
-        end else begin
-            //ready <= 1'b0;
-            
-            //Assign Read_Enable Bank lines
-	    read_enable_Bank01 <= ReadEnable && (Bank_Select == 2'b00);
-
-	    //Assign Write_Enable_Bank lines.
-	    write_enable_Bank01 <= WriteEnable && (Bank_Select == 2'b00);
-        end
-end
-*/
 
 
 //################################################
