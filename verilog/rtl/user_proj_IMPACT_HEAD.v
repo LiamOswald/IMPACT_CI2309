@@ -17,33 +17,29 @@ module user_proj_IMPACT_HEAD (
 `ifdef USE_POWER_PINS
     inout vccd1,	// User area 1 1.8V supply
     inout vssd1,	// User area 1 digital ground
+    inout vccd2,
+    inout vssd2,
 `endif
 
-input reg [7:0] Data_In,				//SRAM byte input		GPIO pins 0-7
-output reg [7:0] Data_Out, 				//SRAM byte output		GPIO pins 8-15
-input reg [9:0] Word_Select,				//Select word from SRAM bank	GPIO pins 16-25
-input reg [1:0] Bank_Select, 				//Select SRAM Bank		GPIO pins 26 & 27
-input reg [1:0] Byte_Select, 				//Select Byte from Word		GPIO pins 28 & 29
-input reg WriteEnable,					//SRAM Write Enable signal	GPIO pin 30
-input reg ReadEnable,					//SRAM Read Enable Signal	GPIO pin 31
-//input reg AnalogVCC;					//VCC control for Bank #4	GPIO pin 32
+input wire [7:0] Data_In,				//SRAM byte input		GPIO pins 0-7
+output wire [7:0] Data_Out, 				//SRAM byte output		GPIO pins 8-15
+input wire [9:0] Word_Select,				//Select word from SRAM bank	GPIO pins 16-25
+input wire [1:0] Bank_Select, 				//Select SRAM Bank		GPIO pins 26 & 27
+input wire [1:0] Byte_Select, 				//Select Byte from Word		GPIO pins 28 & 29
+input wire WriteEnable,					//SRAM Write Enable signal	GPIO pin 30
+input wire ReadEnable,					//SRAM Read Enable Signal	GPIO pin 31
+input wire PreCharge,					//PreCharge	GPIO pin 32
 //input reg [3:0] Truncation_Select;			//Truncation controller		GPIO Pins 33-36
-//input reg Project_Clock,				//User Project Clock 		GPIO Pin 37 
+input clk						//User Project Clock 		GPIO Pin 37 
 
-//input ready,         //ready = wbs_ack_o; //cpu ready signal
-input clk,	//clk = (~la_oenb[64]) ? la_data_in[64]: wb_clk_i;
-input rst	//rst = (~la_oenb[65]) ? la_data_in[65]: wb_rst_i;    
+ 
 );
 
-reg [31:0] Data_Register;
-
-wire [7:0] Data_into_Register;
+wire [31:0] Data_Register;
 			
 wire [1023:0] WordDecoder_Bank01;
 wire [31:0] Bank01_Output_ToMux;
 
-wire Bank01_PRE;
-assign Bank01_PRE = 1'b0;
 
 
 
@@ -67,7 +63,12 @@ BankWordDecoder wordDecoder_Bank01 (
 //Bank01 SRAM Block
 IMPACTSram bank01(
 	
-	.PRE(Bank01_PRE),
+	`ifdef USE_POWER_PINS
+    		.vccd1(vccd1),	// User area 1 1.8V supply
+    		.vssd1(vssd1),	// User area 1 digital ground
+	`endif
+	
+	.PRE(PreCharge),
 	.ReadEn(ReadEnable),
 	.WriteEn(WriteEnable),
 	.Address(WordDecoder_Bank01), //WL
@@ -95,6 +96,8 @@ data_in_decoder DataIn_Decoder(
 	.sel(Byte_Select),
 	.data_out(Data_Register)
 );
+
+	
 
 endmodule
 

@@ -1141,7 +1141,7 @@ full_sram full_sram(
 
 endmodule
 
-(* blackbox *)
+
 module full_sram (
 
 `ifdef USE_POWER_PINS

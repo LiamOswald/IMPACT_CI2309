@@ -57,14 +57,31 @@ module user_project_wrapper #(
 //input [3:0] Truncation_Select	//Truncation controller	GPIO Pins 33-36
 //input Project_Clock	//User Project Clock 		GPIO Pin 37
 
+    // Wishbone Slave ports (WB MI A)
+    input wb_clk_i,
+    input wb_rst_i,
+    input wbs_stb_i,
+    input wbs_cyc_i,
+    input wbs_we_i,
+    input [3:0] wbs_sel_i,
+    input [31:0] wbs_dat_i,
+    input [31:0] wbs_adr_i,
+    output wbs_ack_o,
+    output [31:0] wbs_dat_o,
 
-input [`MPRJ_IO_PADS-1:0] io_in,
-output [`MPRJ_IO_PADS-1:0] io_out,
-output [`MPRJ_IO_PADS-1:0] io_oeb,
+    // Logic Analyzer Signals
+    input  [127:0] la_data_in,
+    output [127:0] la_data_out,
+    input  [127:0] la_oenb,
+
+
+	input [`MPRJ_IO_PADS-1:0] io_in,
+	output [`MPRJ_IO_PADS-1:0] io_out,
+	output [`MPRJ_IO_PADS-1:0] io_oeb,
 
 
 //assign pin 31 to be analog input
-inout [`MPRJ_IO_PADS-6:`MPRJ_IO_PADS-6] analog_io,
+//inout [`MPRJ_IO_PADS-6:`MPRJ_IO_PADS-6] analog_io,
 
 
 
@@ -78,6 +95,19 @@ inout [`MPRJ_IO_PADS-6:`MPRJ_IO_PADS-6] analog_io,
 /*--------------------------------------*/
 /* User project is instantiated  here   */
 /*--------------------------------------*/
+
+
+//create dummy signal to ensure GPIO is working
+assign io_out[36] = ~ io_in[35];
+
+//declare io direction
+assign io_oeb = 38'b11111111_00000000_1111111111_11_11_1_1_0_11_10_1;
+
+
+//fill unused io_out with neat pattern, this should never reach gpio
+assign io_out [0:7] = 8'b01010101;
+assign io_out [16:35] = 20'b10101010101010101010;
+assign io_out [37] = 1'b1;
 
 user_proj_IMPACT_HEAD mprj (
 `ifdef USE_POWER_PINS
@@ -95,9 +125,9 @@ user_proj_IMPACT_HEAD mprj (
     .Byte_Select(io_in[29:28]),			//Select Byte from Word		GPIO pins 28 & 29
     .WriteEnable(io_in[30]),			//SRAM Write Enable signal	GPIO pin 30
     .ReadEnable(io_in[31]),			//SRAM Read Enable Signal	GPIO pin 31
-    .AnalogVCC(analog_io),			//VCC control for Bank #4	GPIO pin 32
-    .Truncation_Select(io_in[36:33]),		//Truncation controller		GPIO Pins 33-36
-    .Project_Clock(io_in[37])			//User Project Clock 		GPIO Pin 37	
+    //.AnalogVCC(analog_io),			//VCC control for Bank #4	GPIO pin 32
+    //.Truncation_Select(io_in[36:33]),		//Truncation controller		GPIO Pins 33-36
+    .clk(io_in[37])			//User Project Clock 		GPIO Pin 37	
 
 
 );
