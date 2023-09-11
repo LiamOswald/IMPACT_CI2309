@@ -1,0 +1,4432 @@
+library (IMPACTSram) {
+  comment                        : "";
+  delay_model                    : table_lookup;
+  simulation                     : false;
+  capacitive_load_unit (1,pF);
+  leakage_power_unit             : 1pW;
+  current_unit                   : "1A";
+  pulling_resistance_unit        : "1kohm";
+  time_unit                      : "1ns";
+  voltage_unit                   : "1v";
+  library_features(report_delay_calculation);
+
+  input_threshold_pct_rise : 50;
+  input_threshold_pct_fall : 50;
+  output_threshold_pct_rise : 50;
+  output_threshold_pct_fall : 50;
+  slew_lower_threshold_pct_rise : 20;
+  slew_lower_threshold_pct_fall : 20;
+  slew_upper_threshold_pct_rise : 80;
+  slew_upper_threshold_pct_fall : 80;
+  slew_derate_from_library : 1.0;
+
+
+  nom_process                    : 1.0;
+  nom_temperature                : 25.0;
+  nom_voltage                    : 1.80;
+
+  type ("Address") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 1024;
+    bit_from : 1023;
+    bit_to : 0;
+  }
+  type ("DataIn") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 32;
+    bit_from : 31;
+    bit_to : 0;
+  }
+  type ("DataOut") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 32;
+    bit_from : 31;
+    bit_to : 0;
+  }
+
+  cell ("IMPACTSram") {
+    pin("PRE") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("ReadEn") {
+      direction : input;
+      capacitance : 0.0031;
+    }
+    pin("WriteEn") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    bus("Address") {
+      bus_type : Address;
+      direction : input;
+      capacitance : 0.0000;
+    pin("Address[1023]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1022]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1021]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1020]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1019]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1018]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1017]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1016]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1015]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1014]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1013]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1012]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1011]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1010]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1009]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1008]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1007]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1006]") {
+      direction : input;
+      capacitance : 0.0104;
+    }
+    pin("Address[1005]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1004]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1003]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[1002]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1001]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[1000]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[999]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[998]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[997]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[996]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[995]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[994]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[993]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[992]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("Address[991]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[990]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[989]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[988]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[987]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[986]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("Address[985]") {
+      direction : input;
+      capacitance : 0.0104;
+    }
+    pin("Address[984]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("Address[983]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[982]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[981]") {
+      direction : input;
+      capacitance : 0.0104;
+    }
+    pin("Address[980]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("Address[979]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[978]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[977]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("Address[976]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[975]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("Address[974]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[973]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("Address[972]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[971]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[970]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[969]") {
+      direction : input;
+      capacitance : 0.0104;
+    }
+    pin("Address[968]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[967]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[966]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[965]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[964]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[963]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[962]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[961]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[960]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[959]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[958]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[957]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[956]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[955]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[954]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[953]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[952]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[951]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[950]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[949]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[948]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[947]") {
+      direction : input;
+      capacitance : 0.0104;
+    }
+    pin("Address[946]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[945]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[944]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[943]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[942]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[941]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[940]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[939]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[938]") {
+      direction : input;
+      capacitance : 0.0096;
+    }
+    pin("Address[937]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[936]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[935]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[934]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[933]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[932]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[931]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[930]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[929]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[928]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[927]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[926]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[925]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[924]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[923]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[922]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[921]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[920]") {
+      direction : input;
+      capacitance : 0.0089;
+    }
+    pin("Address[919]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[918]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[917]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[916]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[915]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[914]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[913]") {
+      direction : input;
+      capacitance : 0.0089;
+    }
+    pin("Address[912]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[911]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[910]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[909]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[908]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[907]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[906]") {
+      direction : input;
+      capacitance : 0.0092;
+    }
+    pin("Address[905]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[904]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[903]") {
+      direction : input;
+      capacitance : 0.0104;
+    }
+    pin("Address[902]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[901]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[900]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[899]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[898]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[897]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("Address[896]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[895]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[894]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[893]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[892]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[891]") {
+      direction : input;
+      capacitance : 0.0082;
+    }
+    pin("Address[890]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[889]") {
+      direction : input;
+      capacitance : 0.0084;
+    }
+    pin("Address[888]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[887]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[886]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[885]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[884]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[883]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[882]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[881]") {
+      direction : input;
+      capacitance : 0.0082;
+    }
+    pin("Address[880]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[879]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[878]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[877]") {
+      direction : input;
+      capacitance : 0.0084;
+    }
+    pin("Address[876]") {
+      direction : input;
+      capacitance : 0.0084;
+    }
+    pin("Address[875]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[874]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[873]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[872]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[871]") {
+      direction : input;
+      capacitance : 0.0082;
+    }
+    pin("Address[870]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[869]") {
+      direction : input;
+      capacitance : 0.0083;
+    }
+    pin("Address[868]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[867]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[866]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[865]") {
+      direction : input;
+      capacitance : 0.0084;
+    }
+    pin("Address[864]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[863]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[862]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[861]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[860]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[859]") {
+      direction : input;
+      capacitance : 0.0082;
+    }
+    pin("Address[858]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[857]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[856]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[855]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[854]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[853]") {
+      direction : input;
+      capacitance : 0.0084;
+    }
+    pin("Address[852]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[851]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[850]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[849]") {
+      direction : input;
+      capacitance : 0.0082;
+    }
+    pin("Address[848]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[847]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[846]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[845]") {
+      direction : input;
+      capacitance : 0.0084;
+    }
+    pin("Address[844]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[843]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[842]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[841]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[840]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[839]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[838]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[837]") {
+      direction : input;
+      capacitance : 0.0083;
+    }
+    pin("Address[836]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[835]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[834]") {
+      direction : input;
+      capacitance : 0.0064;
+    }
+    pin("Address[833]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[832]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[831]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[830]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[829]") {
+      direction : input;
+      capacitance : 0.0063;
+    }
+    pin("Address[828]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[827]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[826]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[825]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[824]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[823]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[822]") {
+      direction : input;
+      capacitance : 0.0064;
+    }
+    pin("Address[821]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[820]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[819]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[818]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[817]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[816]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[815]") {
+      direction : input;
+      capacitance : 0.0049;
+    }
+    pin("Address[814]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[813]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[812]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[811]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[810]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[809]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[808]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[807]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[806]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[805]") {
+      direction : input;
+      capacitance : 0.0050;
+    }
+    pin("Address[804]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[803]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[802]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[801]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[800]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[799]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[798]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[797]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[796]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[795]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[794]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[793]") {
+      direction : input;
+      capacitance : 0.0051;
+    }
+    pin("Address[792]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[791]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[790]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[789]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[788]") {
+      direction : input;
+      capacitance : 0.0052;
+    }
+    pin("Address[787]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[786]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[785]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[784]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[783]") {
+      direction : input;
+      capacitance : 0.0033;
+    }
+    pin("Address[782]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[781]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[780]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[779]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[778]") {
+      direction : input;
+      capacitance : 0.0040;
+    }
+    pin("Address[777]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[776]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[775]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[774]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[773]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[772]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[771]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[770]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[769]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[768]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[767]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[766]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[765]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[764]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[763]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[762]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[761]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[760]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[759]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[758]") {
+      direction : input;
+      capacitance : 0.0040;
+    }
+    pin("Address[757]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[756]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[755]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[754]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[753]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[752]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[751]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[750]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[749]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[748]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[747]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[746]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[745]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[744]") {
+      direction : input;
+      capacitance : 0.0033;
+    }
+    pin("Address[743]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[742]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[741]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[740]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[739]") {
+      direction : input;
+      capacitance : 0.0030;
+    }
+    pin("Address[738]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[737]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[736]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[735]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[734]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[733]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[732]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[731]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[730]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[729]") {
+      direction : input;
+      capacitance : 0.0033;
+    }
+    pin("Address[728]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[727]") {
+      direction : input;
+      capacitance : 0.0031;
+    }
+    pin("Address[726]") {
+      direction : input;
+      capacitance : 0.0040;
+    }
+    pin("Address[725]") {
+      direction : input;
+      capacitance : 0.0033;
+    }
+    pin("Address[724]") {
+      direction : input;
+      capacitance : 0.0042;
+    }
+    pin("Address[723]") {
+      direction : input;
+      capacitance : 0.0028;
+    }
+    pin("Address[722]") {
+      direction : input;
+      capacitance : 0.0031;
+    }
+    pin("Address[721]") {
+      direction : input;
+      capacitance : 0.0028;
+    }
+    pin("Address[720]") {
+      direction : input;
+      capacitance : 0.0031;
+    }
+    pin("Address[719]") {
+      direction : input;
+      capacitance : 0.0028;
+    }
+    pin("Address[718]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[717]") {
+      direction : input;
+      capacitance : 0.0027;
+    }
+    pin("Address[716]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[715]") {
+      direction : input;
+      capacitance : 0.0028;
+    }
+    pin("Address[714]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[713]") {
+      direction : input;
+      capacitance : 0.0028;
+    }
+    pin("Address[712]") {
+      direction : input;
+      capacitance : 0.0029;
+    }
+    pin("Address[711]") {
+      direction : input;
+      capacitance : 0.0028;
+    }
+    pin("Address[710]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[709]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[708]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[707]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[706]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[705]") {
+      direction : input;
+      capacitance : 0.0033;
+    }
+    pin("Address[704]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[703]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[702]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[701]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[700]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[699]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[698]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[697]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[696]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[695]") {
+      direction : input;
+      capacitance : 0.0033;
+    }
+    pin("Address[694]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[693]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[692]") {
+      direction : input;
+      capacitance : 0.0040;
+    }
+    pin("Address[691]") {
+      direction : input;
+      capacitance : 0.0028;
+    }
+    pin("Address[690]") {
+      direction : input;
+      capacitance : 0.0030;
+    }
+    pin("Address[689]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[688]") {
+      direction : input;
+      capacitance : 0.0031;
+    }
+    pin("Address[687]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[686]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[685]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[684]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[683]") {
+      direction : input;
+      capacitance : 0.0028;
+    }
+    pin("Address[682]") {
+      direction : input;
+      capacitance : 0.0033;
+    }
+    pin("Address[681]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[680]") {
+      direction : input;
+      capacitance : 0.0033;
+    }
+    pin("Address[679]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[678]") {
+      direction : input;
+      capacitance : 0.0030;
+    }
+    pin("Address[677]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[676]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[675]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[674]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[673]") {
+      direction : input;
+      capacitance : 0.0031;
+    }
+    pin("Address[672]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[671]") {
+      direction : input;
+      capacitance : 0.0031;
+    }
+    pin("Address[670]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[669]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[668]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[667]") {
+      direction : input;
+      capacitance : 0.0030;
+    }
+    pin("Address[666]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[665]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[664]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[663]") {
+      direction : input;
+      capacitance : 0.0030;
+    }
+    pin("Address[662]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[661]") {
+      direction : input;
+      capacitance : 0.0032;
+    }
+    pin("Address[660]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[659]") {
+      direction : input;
+      capacitance : 0.0030;
+    }
+    pin("Address[658]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[657]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[656]") {
+      direction : input;
+      capacitance : 0.0033;
+    }
+    pin("Address[655]") {
+      direction : input;
+      capacitance : 0.0031;
+    }
+    pin("Address[654]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[653]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[652]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[651]") {
+      direction : input;
+      capacitance : 0.0031;
+    }
+    pin("Address[650]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[649]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[648]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[647]") {
+      direction : input;
+      capacitance : 0.0030;
+    }
+    pin("Address[646]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[645]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[644]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[643]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[642]") {
+      direction : input;
+      capacitance : 0.0042;
+    }
+    pin("Address[641]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[640]") {
+      direction : input;
+      capacitance : 0.0040;
+    }
+    pin("Address[639]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[638]") {
+      direction : input;
+      capacitance : 0.0042;
+    }
+    pin("Address[637]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[636]") {
+      direction : input;
+      capacitance : 0.0042;
+    }
+    pin("Address[635]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[634]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[633]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[632]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[631]") {
+      direction : input;
+      capacitance : 0.0040;
+    }
+    pin("Address[630]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[629]") {
+      direction : input;
+      capacitance : 0.0034;
+    }
+    pin("Address[628]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[627]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[626]") {
+      direction : input;
+      capacitance : 0.0041;
+    }
+    pin("Address[625]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[624]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[623]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[622]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[621]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[620]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[619]") {
+      direction : input;
+      capacitance : 0.0033;
+    }
+    pin("Address[618]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[617]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[616]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[615]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[614]") {
+      direction : input;
+      capacitance : 0.0041;
+    }
+    pin("Address[613]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[612]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[611]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[610]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[609]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[608]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[607]") {
+      direction : input;
+      capacitance : 0.0049;
+    }
+    pin("Address[606]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[605]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[604]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[603]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[602]") {
+      direction : input;
+      capacitance : 0.0052;
+    }
+    pin("Address[601]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[600]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[599]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[598]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[597]") {
+      direction : input;
+      capacitance : 0.0050;
+    }
+    pin("Address[596]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[595]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[594]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[593]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[592]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[591]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[590]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[589]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[588]") {
+      direction : input;
+      capacitance : 0.0052;
+    }
+    pin("Address[587]") {
+      direction : input;
+      capacitance : 0.0049;
+    }
+    pin("Address[586]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[585]") {
+      direction : input;
+      capacitance : 0.0051;
+    }
+    pin("Address[584]") {
+      direction : input;
+      capacitance : 0.0051;
+    }
+    pin("Address[583]") {
+      direction : input;
+      capacitance : 0.0049;
+    }
+    pin("Address[582]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[581]") {
+      direction : input;
+      capacitance : 0.0050;
+    }
+    pin("Address[580]") {
+      direction : input;
+      capacitance : 0.0059;
+    }
+    pin("Address[579]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[578]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[577]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[576]") {
+      direction : input;
+      capacitance : 0.0059;
+    }
+    pin("Address[575]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[574]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[573]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[572]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[571]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[570]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[569]") {
+      direction : input;
+      capacitance : 0.0081;
+    }
+    pin("Address[568]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[567]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[566]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[565]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[564]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[563]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[562]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[561]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[560]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[559]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[558]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[557]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[556]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[555]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[554]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[553]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[552]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[551]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[550]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[549]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[548]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[547]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[546]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[545]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[544]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[543]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[542]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[541]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[540]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[539]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[538]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[537]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[536]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[535]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[534]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[533]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[532]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[531]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[530]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[529]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[528]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[527]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[526]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[525]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[524]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[523]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[522]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[521]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[520]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[519]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[518]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[517]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[516]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[515]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[514]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[513]") {
+      direction : input;
+      capacitance : 0.0079;
+    }
+    pin("Address[512]") {
+      direction : input;
+      capacitance : 0.0080;
+    }
+    pin("Address[511]") {
+      direction : input;
+      capacitance : 0.0097;
+    }
+    pin("Address[510]") {
+      direction : input;
+      capacitance : 0.0096;
+    }
+    pin("Address[509]") {
+      direction : input;
+      capacitance : 0.0095;
+    }
+    pin("Address[508]") {
+      direction : input;
+      capacitance : 0.0100;
+    }
+    pin("Address[507]") {
+      direction : input;
+      capacitance : 0.0097;
+    }
+    pin("Address[506]") {
+      direction : input;
+      capacitance : 0.0098;
+    }
+    pin("Address[505]") {
+      direction : input;
+      capacitance : 0.0096;
+    }
+    pin("Address[504]") {
+      direction : input;
+      capacitance : 0.0099;
+    }
+    pin("Address[503]") {
+      direction : input;
+      capacitance : 0.0099;
+    }
+    pin("Address[502]") {
+      direction : input;
+      capacitance : 0.0097;
+    }
+    pin("Address[501]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[500]") {
+      direction : input;
+      capacitance : 0.0094;
+    }
+    pin("Address[499]") {
+      direction : input;
+      capacitance : 0.0117;
+    }
+    pin("Address[498]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[497]") {
+      direction : input;
+      capacitance : 0.0119;
+    }
+    pin("Address[496]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[495]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[494]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[493]") {
+      direction : input;
+      capacitance : 0.0117;
+    }
+    pin("Address[492]") {
+      direction : input;
+      capacitance : 0.0115;
+    }
+    pin("Address[491]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[490]") {
+      direction : input;
+      capacitance : 0.0122;
+    }
+    pin("Address[489]") {
+      direction : input;
+      capacitance : 0.0117;
+    }
+    pin("Address[488]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[487]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[486]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[485]") {
+      direction : input;
+      capacitance : 0.0104;
+    }
+    pin("Address[484]") {
+      direction : input;
+      capacitance : 0.0100;
+    }
+    pin("Address[483]") {
+      direction : input;
+      capacitance : 0.0104;
+    }
+    pin("Address[482]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[481]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[480]") {
+      direction : input;
+      capacitance : 0.0104;
+    }
+    pin("Address[479]") {
+      direction : input;
+      capacitance : 0.0094;
+    }
+    pin("Address[478]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[477]") {
+      direction : input;
+      capacitance : 0.0084;
+    }
+    pin("Address[476]") {
+      direction : input;
+      capacitance : 0.0084;
+    }
+    pin("Address[475]") {
+      direction : input;
+      capacitance : 0.0084;
+    }
+    pin("Address[474]") {
+      direction : input;
+      capacitance : 0.0092;
+    }
+    pin("Address[473]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[472]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[471]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[470]") {
+      direction : input;
+      capacitance : 0.0091;
+    }
+    pin("Address[469]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[468]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[467]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[466]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[465]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[464]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[463]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[462]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[461]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[460]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[459]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[458]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[457]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[456]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[455]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[454]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[453]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[452]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[451]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[450]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[449]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[448]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[447]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[446]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[445]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[444]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[443]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[442]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[441]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[440]") {
+      direction : input;
+      capacitance : 0.0093;
+    }
+    pin("Address[439]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[438]") {
+      direction : input;
+      capacitance : 0.0095;
+    }
+    pin("Address[437]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[436]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[435]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[434]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[433]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[432]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[431]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[430]") {
+      direction : input;
+      capacitance : 0.0094;
+    }
+    pin("Address[429]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[428]") {
+      direction : input;
+      capacitance : 0.0092;
+    }
+    pin("Address[427]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[426]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[425]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[424]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[423]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[422]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[421]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[420]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[419]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[418]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[417]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[416]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[415]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[414]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[413]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[412]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[411]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[410]") {
+      direction : input;
+      capacitance : 0.0063;
+    }
+    pin("Address[409]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[408]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[407]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[406]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[405]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[404]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[403]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[402]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[401]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[400]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[399]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[398]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[397]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[396]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[395]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[394]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[393]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[392]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[391]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[390]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[389]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[388]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[387]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[386]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[385]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[384]") {
+      direction : input;
+      capacitance : 0.0066;
+    }
+    pin("Address[383]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[382]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[381]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[380]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[379]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[378]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[377]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[376]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[375]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[374]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[373]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[372]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[371]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[370]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[369]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[368]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[367]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[366]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[365]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[364]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[363]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[362]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[361]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[360]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[359]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[358]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[357]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[356]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[355]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[354]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[353]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[352]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[351]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[350]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[349]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[348]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[347]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[346]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[345]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[344]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[343]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[342]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[341]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[340]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[339]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[338]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[337]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[336]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[335]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[334]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[333]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[332]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[331]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[330]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[329]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[328]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[327]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[326]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[325]") {
+      direction : input;
+      capacitance : 0.0036;
+    }
+    pin("Address[324]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[323]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[322]") {
+      direction : input;
+      capacitance : 0.0039;
+    }
+    pin("Address[321]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[320]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[319]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[318]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[317]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[316]") {
+      direction : input;
+      capacitance : 0.0037;
+    }
+    pin("Address[315]") {
+      direction : input;
+      capacitance : 0.0035;
+    }
+    pin("Address[314]") {
+      direction : input;
+      capacitance : 0.0038;
+    }
+    pin("Address[313]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[312]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[311]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[310]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[309]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[308]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[307]") {
+      direction : input;
+      capacitance : 0.0054;
+    }
+    pin("Address[306]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[305]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[304]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[303]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[302]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[301]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[300]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[299]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[298]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[297]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[296]") {
+      direction : input;
+      capacitance : 0.0056;
+    }
+    pin("Address[295]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[294]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[293]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[292]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[291]") {
+      direction : input;
+      capacitance : 0.0053;
+    }
+    pin("Address[290]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[289]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[288]") {
+      direction : input;
+      capacitance : 0.0057;
+    }
+    pin("Address[287]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[286]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[285]") {
+      direction : input;
+      capacitance : 0.0055;
+    }
+    pin("Address[284]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[283]") {
+      direction : input;
+      capacitance : 0.0059;
+    }
+    pin("Address[282]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[281]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[280]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[279]") {
+      direction : input;
+      capacitance : 0.0059;
+    }
+    pin("Address[278]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[277]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[276]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[275]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[274]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[273]") {
+      direction : input;
+      capacitance : 0.0059;
+    }
+    pin("Address[272]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[271]") {
+      direction : input;
+      capacitance : 0.0059;
+    }
+    pin("Address[270]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[269]") {
+      direction : input;
+      capacitance : 0.0059;
+    }
+    pin("Address[268]") {
+      direction : input;
+      capacitance : 0.0063;
+    }
+    pin("Address[267]") {
+      direction : input;
+      capacitance : 0.0058;
+    }
+    pin("Address[266]") {
+      direction : input;
+      capacitance : 0.0062;
+    }
+    pin("Address[265]") {
+      direction : input;
+      capacitance : 0.0059;
+    }
+    pin("Address[264]") {
+      direction : input;
+      capacitance : 0.0061;
+    }
+    pin("Address[263]") {
+      direction : input;
+      capacitance : 0.0059;
+    }
+    pin("Address[262]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[261]") {
+      direction : input;
+      capacitance : 0.0059;
+    }
+    pin("Address[260]") {
+      direction : input;
+      capacitance : 0.0060;
+    }
+    pin("Address[259]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[258]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[257]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[256]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[255]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[254]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[253]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[252]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[251]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[250]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[249]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[248]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[247]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[246]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[245]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[244]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[243]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[242]") {
+      direction : input;
+      capacitance : 0.0089;
+    }
+    pin("Address[241]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[240]") {
+      direction : input;
+      capacitance : 0.0089;
+    }
+    pin("Address[239]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[238]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[237]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[236]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[235]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[234]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[233]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[232]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[231]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[230]") {
+      direction : input;
+      capacitance : 0.0089;
+    }
+    pin("Address[229]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[228]") {
+      direction : input;
+      capacitance : 0.0088;
+    }
+    pin("Address[227]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[226]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[225]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[224]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[223]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[222]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[221]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[220]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[219]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[218]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[217]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[216]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[215]") {
+      direction : input;
+      capacitance : 0.0085;
+    }
+    pin("Address[214]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[213]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[212]") {
+      direction : input;
+      capacitance : 0.0086;
+    }
+    pin("Address[211]") {
+      direction : input;
+      capacitance : 0.0099;
+    }
+    pin("Address[210]") {
+      direction : input;
+      capacitance : 0.0087;
+    }
+    pin("Address[209]") {
+      direction : input;
+      capacitance : 0.0090;
+    }
+    pin("Address[208]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[207]") {
+      direction : input;
+      capacitance : 0.0097;
+    }
+    pin("Address[206]") {
+      direction : input;
+      capacitance : 0.0098;
+    }
+    pin("Address[205]") {
+      direction : input;
+      capacitance : 0.0100;
+    }
+    pin("Address[204]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[203]") {
+      direction : input;
+      capacitance : 0.0098;
+    }
+    pin("Address[202]") {
+      direction : input;
+      capacitance : 0.0099;
+    }
+    pin("Address[201]") {
+      direction : input;
+      capacitance : 0.0100;
+    }
+    pin("Address[200]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[199]") {
+      direction : input;
+      capacitance : 0.0096;
+    }
+    pin("Address[198]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[197]") {
+      direction : input;
+      capacitance : 0.0121;
+    }
+    pin("Address[196]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[195]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[194]") {
+      direction : input;
+      capacitance : 0.0125;
+    }
+    pin("Address[193]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[192]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[191]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[190]") {
+      direction : input;
+      capacitance : 0.0128;
+    }
+    pin("Address[189]") {
+      direction : input;
+      capacitance : 0.0095;
+    }
+    pin("Address[188]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[187]") {
+      direction : input;
+      capacitance : 0.0098;
+    }
+    pin("Address[186]") {
+      direction : input;
+      capacitance : 0.0097;
+    }
+    pin("Address[185]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[184]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[183]") {
+      direction : input;
+      capacitance : 0.0096;
+    }
+    pin("Address[182]") {
+      direction : input;
+      capacitance : 0.0100;
+    }
+    pin("Address[181]") {
+      direction : input;
+      capacitance : 0.0101;
+    }
+    pin("Address[180]") {
+      direction : input;
+      capacitance : 0.0117;
+    }
+    pin("Address[179]") {
+      direction : input;
+      capacitance : 0.0096;
+    }
+    pin("Address[178]") {
+      direction : input;
+      capacitance : 0.0099;
+    }
+    pin("Address[177]") {
+      direction : input;
+      capacitance : 0.0102;
+    }
+    pin("Address[176]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[175]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[174]") {
+      direction : input;
+      capacitance : 0.0099;
+    }
+    pin("Address[173]") {
+      direction : input;
+      capacitance : 0.0103;
+    }
+    pin("Address[172]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[171]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[170]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[169]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[168]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[167]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[166]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[165]") {
+      direction : input;
+      capacitance : 0.0104;
+    }
+    pin("Address[164]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[163]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[162]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[161]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("Address[160]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[159]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[158]") {
+      direction : input;
+      capacitance : 0.0127;
+    }
+    pin("Address[157]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[156]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[155]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[154]") {
+      direction : input;
+      capacitance : 0.0124;
+    }
+    pin("Address[153]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[152]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[151]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[150]") {
+      direction : input;
+      capacitance : 0.0126;
+    }
+    pin("Address[149]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[148]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[147]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[146]") {
+      direction : input;
+      capacitance : 0.0127;
+    }
+    pin("Address[145]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[144]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[143]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[142]") {
+      direction : input;
+      capacitance : 0.0123;
+    }
+    pin("Address[141]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[140]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[139]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[138]") {
+      direction : input;
+      capacitance : 0.0128;
+    }
+    pin("Address[137]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[136]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[135]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[134]") {
+      direction : input;
+      capacitance : 0.0123;
+    }
+    pin("Address[133]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[132]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[131]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[130]") {
+      direction : input;
+      capacitance : 0.0127;
+    }
+    pin("Address[129]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[128]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[127]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[126]") {
+      direction : input;
+      capacitance : 0.0126;
+    }
+    pin("Address[125]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[124]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[123]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[122]") {
+      direction : input;
+      capacitance : 0.0122;
+    }
+    pin("Address[121]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[120]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[119]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[118]") {
+      direction : input;
+      capacitance : 0.0126;
+    }
+    pin("Address[117]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[116]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[115]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[114]") {
+      direction : input;
+      capacitance : 0.0126;
+    }
+    pin("Address[113]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[112]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[111]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[110]") {
+      direction : input;
+      capacitance : 0.0122;
+    }
+    pin("Address[109]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[108]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[107]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[106]") {
+      direction : input;
+      capacitance : 0.0127;
+    }
+    pin("Address[105]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[104]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("Address[103]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[102]") {
+      direction : input;
+      capacitance : 0.0125;
+    }
+    pin("Address[101]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[100]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[99]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[98]") {
+      direction : input;
+      capacitance : 0.0122;
+    }
+    pin("Address[97]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[96]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[95]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[94]") {
+      direction : input;
+      capacitance : 0.0126;
+    }
+    pin("Address[93]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[92]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[91]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[90]") {
+      direction : input;
+      capacitance : 0.0122;
+    }
+    pin("Address[89]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[88]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[87]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[86]") {
+      direction : input;
+      capacitance : 0.0125;
+    }
+    pin("Address[85]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[84]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[83]") {
+      direction : input;
+      capacitance : 0.0119;
+    }
+    pin("Address[82]") {
+      direction : input;
+      capacitance : 0.0127;
+    }
+    pin("Address[81]") {
+      direction : input;
+      capacitance : 0.0115;
+    }
+    pin("Address[80]") {
+      direction : input;
+      capacitance : 0.0117;
+    }
+    pin("Address[79]") {
+      direction : input;
+      capacitance : 0.0120;
+    }
+    pin("Address[78]") {
+      direction : input;
+      capacitance : 0.0121;
+    }
+    pin("Address[77]") {
+      direction : input;
+      capacitance : 0.0115;
+    }
+    pin("Address[76]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[75]") {
+      direction : input;
+      capacitance : 0.0120;
+    }
+    pin("Address[74]") {
+      direction : input;
+      capacitance : 0.0127;
+    }
+    pin("Address[73]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[72]") {
+      direction : input;
+      capacitance : 0.0119;
+    }
+    pin("Address[71]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[70]") {
+      direction : input;
+      capacitance : 0.0125;
+    }
+    pin("Address[69]") {
+      direction : input;
+      capacitance : 0.0115;
+    }
+    pin("Address[68]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[67]") {
+      direction : input;
+      capacitance : 0.0119;
+    }
+    pin("Address[66]") {
+      direction : input;
+      capacitance : 0.0120;
+    }
+    pin("Address[65]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[64]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[63]") {
+      direction : input;
+      capacitance : 0.0120;
+    }
+    pin("Address[62]") {
+      direction : input;
+      capacitance : 0.0128;
+    }
+    pin("Address[61]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[60]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[59]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[58]") {
+      direction : input;
+      capacitance : 0.0124;
+    }
+    pin("Address[57]") {
+      direction : input;
+      capacitance : 0.0115;
+    }
+    pin("Address[56]") {
+      direction : input;
+      capacitance : 0.0115;
+    }
+    pin("Address[55]") {
+      direction : input;
+      capacitance : 0.0119;
+    }
+    pin("Address[54]") {
+      direction : input;
+      capacitance : 0.0120;
+    }
+    pin("Address[53]") {
+      direction : input;
+      capacitance : 0.0119;
+    }
+    pin("Address[52]") {
+      direction : input;
+      capacitance : 0.0117;
+    }
+    pin("Address[51]") {
+      direction : input;
+      capacitance : 0.0119;
+    }
+    pin("Address[50]") {
+      direction : input;
+      capacitance : 0.0126;
+    }
+    pin("Address[49]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[48]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[47]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[46]") {
+      direction : input;
+      capacitance : 0.0122;
+    }
+    pin("Address[45]") {
+      direction : input;
+      capacitance : 0.0115;
+    }
+    pin("Address[44]") {
+      direction : input;
+      capacitance : 0.0117;
+    }
+    pin("Address[43]") {
+      direction : input;
+      capacitance : 0.0119;
+    }
+    pin("Address[42]") {
+      direction : input;
+      capacitance : 0.0123;
+    }
+    pin("Address[41]") {
+      direction : input;
+      capacitance : 0.0115;
+    }
+    pin("Address[40]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[39]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[38]") {
+      direction : input;
+      capacitance : 0.0126;
+    }
+    pin("Address[37]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[36]") {
+      direction : input;
+      capacitance : 0.0117;
+    }
+    pin("Address[35]") {
+      direction : input;
+      capacitance : 0.0118;
+    }
+    pin("Address[34]") {
+      direction : input;
+      capacitance : 0.0121;
+    }
+    pin("Address[33]") {
+      direction : input;
+      capacitance : 0.0122;
+    }
+    pin("Address[32]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[31]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[30]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[29]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[28]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[27]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[26]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[25]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[24]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[23]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[22]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[21]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[20]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[19]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[18]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("Address[17]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[16]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[15]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("Address[14]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[13]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[12]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[11]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[10]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[9]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[8]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[7]") {
+      direction : input;
+      capacitance : 0.0113;
+    }
+    pin("Address[6]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[5]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("Address[4]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[3]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[2]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    pin("Address[1]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("Address[0]") {
+      direction : input;
+      capacitance : 0.0112;
+    }
+    }
+    bus("DataIn") {
+      bus_type : DataIn;
+      direction : input;
+      capacitance : 0.0000;
+    pin("DataIn[31]") {
+      direction : input;
+      capacitance : 0.0123;
+    }
+    pin("DataIn[30]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[29]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[28]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[27]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[26]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[25]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    pin("DataIn[24]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("DataIn[23]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("DataIn[22]") {
+      direction : input;
+      capacitance : 0.0107;
+    }
+    pin("DataIn[21]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("DataIn[20]") {
+      direction : input;
+      capacitance : 0.0127;
+    }
+    pin("DataIn[19]") {
+      direction : input;
+      capacitance : 0.0121;
+    }
+    pin("DataIn[18]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("DataIn[17]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[16]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[15]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[14]") {
+      direction : input;
+      capacitance : 0.0114;
+    }
+    pin("DataIn[13]") {
+      direction : input;
+      capacitance : 0.0119;
+    }
+    pin("DataIn[12]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[11]") {
+      direction : input;
+      capacitance : 0.0116;
+    }
+    pin("DataIn[10]") {
+      direction : input;
+      capacitance : 0.0115;
+    }
+    pin("DataIn[9]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[8]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("DataIn[7]") {
+      direction : input;
+      capacitance : 0.0111;
+    }
+    pin("DataIn[6]") {
+      direction : input;
+      capacitance : 0.0110;
+    }
+    pin("DataIn[5]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("DataIn[4]") {
+      direction : input;
+      capacitance : 0.0106;
+    }
+    pin("DataIn[3]") {
+      direction : input;
+      capacitance : 0.0109;
+    }
+    pin("DataIn[2]") {
+      direction : input;
+      capacitance : 0.0120;
+    }
+    pin("DataIn[1]") {
+      direction : input;
+      capacitance : 0.0105;
+    }
+    pin("DataIn[0]") {
+      direction : input;
+      capacitance : 0.0108;
+    }
+    }
+    bus("DataOut") {
+      bus_type : DataOut;
+      direction : output;
+      capacitance : 0.0000;
+    pin("DataOut[31]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[30]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[29]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[28]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[27]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[26]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[25]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[24]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[23]") {
+      direction : output;
+      capacitance : 0.0011;
+    }
+    pin("DataOut[22]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[21]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[20]") {
+      direction : output;
+      capacitance : 0.0016;
+    }
+    pin("DataOut[19]") {
+      direction : output;
+      capacitance : 0.0017;
+    }
+    pin("DataOut[18]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("DataOut[17]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[16]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[15]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[14]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[13]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[12]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[11]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[10]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("DataOut[9]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[8]") {
+      direction : output;
+      capacitance : 0.0021;
+    }
+    pin("DataOut[7]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[6]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[5]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("DataOut[4]") {
+      direction : output;
+      capacitance : 0.0014;
+    }
+    pin("DataOut[3]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("DataOut[2]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("DataOut[1]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("DataOut[0]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    }
+  }
+
+}

@@ -21,6 +21,8 @@ module user_proj_IMPACT_HEAD (
     inout vssd2,
 `endif
 
+output [37:0] io_oeb,
+
 input wire [7:0] Data_In,				//SRAM byte input		GPIO pins 0-7
 output wire [7:0] Data_Out, 				//SRAM byte output		GPIO pins 8-15
 input wire [9:0] Word_Select,				//Select word from SRAM bank	GPIO pins 16-25
@@ -34,6 +36,8 @@ input clk						//User Project Clock 		GPIO Pin 37
 
  
 );
+//declare io direction
+assign io_oeb = 38'b11111111_00000000_1111111111_11_11_1_1_0_11_10_1;
 
 wire [31:0] Data_Register;
 			

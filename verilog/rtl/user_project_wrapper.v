@@ -97,18 +97,6 @@ module user_project_wrapper #(
 /*--------------------------------------*/
 
 
-//create dummy signal to ensure GPIO is working
-assign io_out[36] = ~ io_in[35];
-
-//declare io direction
-assign io_oeb = 38'b11111111_00000000_1111111111_11_11_1_1_0_11_10_1;
-
-
-//fill unused io_out with neat pattern, this should never reach gpio
-assign io_out [0:7] = 8'b01010101;
-assign io_out [16:35] = 20'b10101010101010101010;
-assign io_out [37] = 1'b1;
-
 user_proj_IMPACT_HEAD mprj (
 `ifdef USE_POWER_PINS
 	.vccd1(vccd1),	// User area 1 1.8V power
@@ -116,6 +104,7 @@ user_proj_IMPACT_HEAD mprj (
 `endif
 
     // IO Pads
+    .io_oeb(io_oeb),
     
    
     .Data_In(io_in[7:0]),			//SRAM byte input		GPIO pins 0-7

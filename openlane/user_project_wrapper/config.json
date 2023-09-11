@@ -5,22 +5,28 @@
         "dir::../../verilog/rtl/user_project_wrapper.v"
     ],
     
-    "VERILOG_FILES_BLACKBOX": "dir::../../verilog/rtl/user_proj_IMPACT_HEAD.v",
-    
-    "QUIT_ON_UNMAPPED_CELLS": 0,
-    
-    "ROUTING_CORES": 12,
     "CLOCK_PERIOD": 25,
-    "CLOCK_PORT": "clk",
-    "CLOCK_NET": "mprj.clk",
+    "CLOCK_PORT": "wb_clk_i",
+    "CLOCK_NET": "wb_clk_i",
+    
+    "VERILOG_FILES_BLACKBOX": "dir::../../verilog/rtl/user_proj_IMPACT_HEAD.v",
+
+  
+    "ROUTING_CORES": 12,
+
+
     "FP_PDN_MACRO_HOOKS": "mprj vccd1 vssd1 vccd1 vssd1",
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "MAGIC_DEF_LABELS": 0,
     
-    "EXTRA_LEFS": "dir::../../lef/user_proj_IMPACT_HEAD.lef",
+    "EXTRA_LEFS": [
+    	"dir::../../lef/user_proj_IMPACT_HEAD.lef",
+    	"dir::../../lef/IMPACTSram.lef"
+    ],
+
+    
     "EXTRA_GDS_FILES": "dir::../../gds/user_proj_IMPACT_HEAD.gds",
 
-    "BASE_SDC_FILE": "dir::base_user_project_wrapper.sdc",
     "IO_SYNC": 0,
     "MAX_TRANSITION_CONSTRAINT": 1.5,
     "RUN_LINTER": 0,

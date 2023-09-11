@@ -17,6 +17,7 @@
     	"BankWordDecoder"
     ],
     
+    "DRT_MIN_LAYER": "li1",
     "GRT_ALLOW_CONGESTION":1,
     "RSZ_MULTICORNER_LIB": 0,
     "RUN_LVS": 0,
