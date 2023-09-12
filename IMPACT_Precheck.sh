@@ -17,7 +17,6 @@
 
 #Setting Export Variables for IMPACT_SRAM Caravel Design
 #Created by LiamOswald
-
 mkdir dependencies
 
 export OPENLANE_ROOT=$(pwd)/dependencies/openlane_src # you need to export this whenever you start a new shell
@@ -35,6 +34,4 @@ mkdir -p $(pwd)/caravel_venv
 python3 -m venv $(pwd)/caravel_venv
 source $(pwd)/caravel_venv/bin/activate
 
-make simenv
-make verify-io_ports-rtl
-make verify-io_ports-gl
+make run-precheck

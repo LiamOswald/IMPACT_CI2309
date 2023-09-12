@@ -14,20 +14,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 `default_nettype none
-/*
- *-------------------------------------------------------------
- *
- * user_project_wrapper
- *
- * This wrapper enumerates all of the pins available to the
- * user for the user project.
- *
- * An example user project is provided in this wrapper.  The
- * example should be removed and replaced with the actual
- * user project.
- *
- *-------------------------------------------------------------
- */
+
 
 module user_project_wrapper #(
     parameter BITS = 32
@@ -73,17 +60,22 @@ module user_project_wrapper #(
     input  [127:0] la_data_in,
     output [127:0] la_data_out,
     input  [127:0] la_oenb,
+    
+    // Analog (direct connection to GPIO pad---use with caution)
+    // Note that analog I/O is not available on the 7 lowest-numbered
+    // GPIO pads, and so the analog_io indexing is offset from the
+    // GPIO indexing by 7 (also upper 2 GPIOs do not have analog_io).
+    inout [`MPRJ_IO_PADS-10:0] analog_io,
+    
+    // User maskable interrupt signals
+    output [2:0] user_irq,
+    
+    input user_clock2,
 
 
 	input [`MPRJ_IO_PADS-1:0] io_in,
 	output [`MPRJ_IO_PADS-1:0] io_out,
 	output [`MPRJ_IO_PADS-1:0] io_oeb,
-
-
-//assign pin 31 to be analog input
-//inout [`MPRJ_IO_PADS-6:`MPRJ_IO_PADS-6] analog_io,
-
-
 
 
 //WishBone Unused for IMPACT design -LiamOswald 03/22/2023
@@ -105,8 +97,7 @@ user_proj_IMPACT_HEAD mprj (
 
     // IO Pads
     .io_oeb(io_oeb),
-    
-   
+     
     .Data_In(io_in[7:0]),			//SRAM byte input		GPIO pins 0-7
     .Data_Out(io_out[15:8]), 			//SRAM byte output		GPIO pins 8-15
     .Word_Select(io_in[25:16]), 		//Select word from SRAM bank	GPIO pins 16-25

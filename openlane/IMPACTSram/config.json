@@ -15,7 +15,7 @@
 
     "DRT_MIN_LAYER": "li1",
     "GRT_ALLOW_CONGESTION": 1,
-    "RUN_LVS": 0,
+    "RUN_LVS": 1,
     
 
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
