@@ -51,8 +51,8 @@ module user_proj_IMPACT_HEAD (
 IMPACTSram bank01(
 `ifdef USE_POWER_PINS
 
-	.vccd1(vccd1),	// User area 1 1.8V power
-	.vssd1(vssd1),	// User area 1 digital ground
+	.vccd1(VPWR),	// User area 1 1.8V power
+	.vssd1(VGND),	// User area 1 digital ground
 `endif
 
 .WL0(East [0]),
