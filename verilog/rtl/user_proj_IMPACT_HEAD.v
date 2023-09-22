@@ -10,6 +10,7 @@
  *
  *-------------------------------------------------------------
  */
+ /// sta-blackbox
 `include "user_defines.v" //why this?
 
 module user_proj_IMPACT_HEAD (
@@ -33,7 +34,8 @@ module user_proj_IMPACT_HEAD (
    
     input [31:0] East,
     inout [31:0] West,
-    inout [31:0] South
+    inout [31:0] South,
+    input clk
 
 );
 
@@ -42,6 +44,17 @@ module user_proj_IMPACT_HEAD (
 //Creates the Four Word Decoders Instences for the Four Memory Banks
 //################################################
 
+wire [31:0] WL01;
+
+BankWordDecoder decoder01 (
+	`ifdef USE_POWER_PINS
+		.vccd1(vccd1),	// User area 1 1.8V power
+		.vssd1(vssd1),	// User area 1 digital ground
+	`endif
+	.clk(clk),
+	.sel(East [4:0]),
+	.address(WL01)
+);
 
 
 
@@ -54,38 +67,38 @@ IMPACTSram bank01(
 	.vssd1(vssd1),	// User area 1 digital ground
 `endif
 
-.WL0(East [0]),
-.WL1(East [1]),
-.WL2(East [2]),
-.WL3(East [3]),
-.WL4(East [4]),
-.WL5(East [5]),
-.WL6(East [6]),
-.WL7(East [7]),
-.WL8(East [8]),
-.WL9(East [9]),
-.WL10(East [10]),
-.WL11(East [11]),
-.WL12(East [12]),
-.WL13(East [13]),
-.WL14(East [14]),
-.WL15(East [15]),
-.WL16(East [16]),
-.WL17(East [17]),
-.WL18(East [18]),
-.WL19(East [19]),
-.WL20(East [20]),
-.WL21(East [21]),
-.WL22(East [22]),
-.WL23(East [23]),
-.WL24(East [24]),
-.WL25(East [25]),
-.WL26(East [26]),
-.WL27(East [27]),
-.WL28(East [28]),
-.WL29(East [29]),
-.WL30(East [30]),
-.WL31(East [31]),
+.WL0(WL01 [0]),
+.WL1(WL01 [1]),
+.WL2(WL01 [2]),
+.WL3(WL01 [3]),
+.WL4(WL01 [4]),
+.WL5(WL01 [5]),
+.WL6(WL01 [6]),
+.WL7(WL01 [7]),
+.WL8(WL01 [8]),
+.WL9(WL01 [9]),
+.WL10(WL01 [10]),
+.WL11(WL01 [11]),
+.WL12(WL01 [12]),
+.WL13(WL01 [13]),
+.WL14(WL01 [14]),
+.WL15(WL01 [15]),
+.WL16(WL01 [16]),
+.WL17(WL01 [17]),
+.WL18(WL01 [18]),
+.WL19(WL01 [19]),
+.WL20(WL01 [20]),
+.WL21(WL01 [21]),
+.WL22(WL01 [22]),
+.WL23(WL01 [23]),
+.WL24(WL01 [24]),
+.WL25(WL01 [25]),
+.WL26(WL01 [26]),
+.WL27(WL01 [27]),
+.WL28(WL01 [28]),
+.WL29(WL01 [29]),
+.WL30(WL01 [30]),
+.WL31(WL01 [31]),
 
 .BL0(West [0]),
 .BL1(West [1]),
@@ -177,6 +190,30 @@ module IMPACTSram (
    
 );
 endmodule
+
+module BankWordDecoder (
+`ifdef USE_POWER_PINS
+    inout vccd1,	// User area 1 1.8V supply
+    inout vssd1,	// User area 1 digital ground
+`endif
+	input clk,
+	input [4:0] sel,
+	output reg [31:0] address
+
+);
+
+    integer i;
+    always@(posedge clk) begin
+        for(i=0;i<32;i=i+1) begin
+            address[i]=(sel==i)?1'b1:1'b0;
+        end
+    end
+
+endmodule
+
+
+
+
 `default_nettype wire
 
 

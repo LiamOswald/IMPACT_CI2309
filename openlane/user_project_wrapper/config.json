@@ -12,17 +12,11 @@
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "MAGIC_DEF_LABELS": 0,
     "VERILOG_FILES_BLACKBOX": [
-        "dir::../../verilog/rtl/user_proj_IMPACT_HEAD.v"
+        "dir::../../verilog/gl/user_proj_IMPACT_HEAD.v"
     ],
-    "EXTRA_LEFS": [
-    "dir::../../lef/user_proj_IMPACT_HEAD.lef",
-    "dir::../../lef/IMPACTSram.lef"
-    ],
-    "EXTRA_GDS_FILES": [
-    "dir::../../gds/user_proj_IMPACT_HEAD.gds",
-    "dir::../../gds/IMPACTSram.gds"
-    ],
-    "BASE_SDC_FILE": "dir::user_proj_IMPACT_HEAD.sdc",
+    "EXTRA_LEFS": "dir::../../lef/user_proj_IMPACT_HEAD.lef",
+
+    "EXTRA_GDS_FILES": "dir::../../gds/user_proj_IMPACT_HEAD.gds",
 
     "IO_SYNC": 0,
     "MAX_TRANSITION_CONSTRAINT": 1.5,
