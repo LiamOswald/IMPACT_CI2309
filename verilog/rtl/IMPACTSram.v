@@ -13,6 +13,8 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
+
+/// sta-blackbox
 module IMPACTSram (
 
 `ifdef USE_POWER_PINS

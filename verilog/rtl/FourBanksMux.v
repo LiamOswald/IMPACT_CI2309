@@ -35,8 +35,7 @@
  */
 
 
-module FourBanksMux (clk, Bank01_Reading, Bank02_Reading, Bank03_Reading, Bank04_Reading, bank_sel, byte_sel, data_out);
-input clk;
+module FourBanksMux (Bank01_Reading, Bank02_Reading, Bank03_Reading, Bank04_Reading, bank_sel, byte_sel, data_out);
 input [31:0] Bank01_Reading;
 input [31:0] Bank02_Reading;
 input [31:0] Bank03_Reading;
@@ -49,19 +48,19 @@ output reg [7:0] data_out;
 
 reg [31:0] Bank_to_read;
 
-always @(posedge clk) begin
+always @(*) begin
    case (bank_sel)
-      2'b00: Bank_to_read = Bank01_Reading;
-      2'b01: Bank_to_read = Bank02_Reading;
-      2'b10: Bank_to_read = Bank03_Reading;
-      2'b11: Bank_to_read = Bank04_Reading;
+      2'b00: Bank_to_read <= Bank01_Reading;
+      2'b01: Bank_to_read <= Bank02_Reading;
+      2'b10: Bank_to_read <= Bank03_Reading;
+      2'b11: Bank_to_read <= Bank04_Reading;
    endcase
    
    case (byte_sel)
-      2'b00: data_out = Bank_to_read[7:0];
-      2'b01: data_out = Bank_to_read[15:8];
-      2'b10: data_out = Bank_to_read[23:16];
-      2'b11: data_out = Bank_to_read[31:24];
+      2'b00: data_out <= Bank_to_read[7:0];
+      2'b01: data_out <= Bank_to_read[15:8];
+      2'b10: data_out <= Bank_to_read[23:16];
+      2'b11: data_out <= Bank_to_read[31:24];
    endcase
 end
 
