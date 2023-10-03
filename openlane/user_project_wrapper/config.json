@@ -19,10 +19,9 @@
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "MAGIC_DEF_LABELS": 0,
     
-    "EXTRA_LEFS": [
-    	"dir::../../lef/user_proj_IMPACT_HEAD.lef",
-    	"dir::../../lef/IMPACTSram.lef"
-    ],
+    "EXTRA_LEFS":  "dir::../../lef/user_proj_IMPACT_HEAD.lef",
+
+
 
     
     "EXTRA_GDS_FILES": "dir::../../gds/user_proj_IMPACT_HEAD.gds",

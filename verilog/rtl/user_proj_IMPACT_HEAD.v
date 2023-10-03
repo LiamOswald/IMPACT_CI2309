@@ -34,6 +34,9 @@ module user_proj_IMPACT_HEAD (
     inout vssd1,	// User area 1 digital ground
 `endif
 
+output [37:0] io_oeb,
+    // IRQ
+output wire [2:0] user_irq,
 input wire [7:0] Data_In,				//SRAM byte input		GPIO pins 0-7
 output wire [7:0] Data_Out, 				//SRAM byte output		GPIO pins 8-15
 input wire [9:0] Word_Select,				//Select word from SRAM bank	GPIO pins 16-25
@@ -44,6 +47,9 @@ input wire ReadEnable,					//SRAM Read Enable Signal	GPIO pin 31
 input wire PreCharge,
 input clk					//PreCharge	GPIO pin 32
 );
+
+assign io_oeb = 38'b11111111_00000000_1111111111_11_11_1_1_0_11_10_1;
+assign user_irq = 3'b000;	// Unused
 
 wire [31:0] DataIn;
 			
