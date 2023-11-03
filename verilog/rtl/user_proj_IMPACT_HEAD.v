@@ -39,11 +39,12 @@ output [37:0] io_oeb,
 output wire [2:0] user_irq,
 input wire [7:0] Data_In,				//SRAM byte input		GPIO pins 0-7
 output wire [7:0] Data_Out, 				//SRAM byte output		GPIO pins 8-15
-input wire [9:0] Word_Select,				//Select word from SRAM bank	GPIO pins 16-25
-input wire [1:0] Bank_Select, 				//Select SRAM Bank		GPIO pins 26 & 27
+input wire [9:0] Word_Select,				/////////////////////////////////////changed 9 to 4///////////////////////////
+//input wire [1:0] Bank_Select, 				//Select SRAM Bank		GPIO pins 26 & 27
 input wire [1:0] Byte_Select, 				//Select Byte from Word		GPIO pins 28 & 29
 input wire WriteEnable,					//SRAM Write Enable signal	GPIO pin 30
-input wire ReadEnable,					//SRAM Read Enable Signal	GPIO pin 31
+input wire ReadEnable,
+input wire WL_enable,					//SRAM Read Enable Signal	GPIO pin 31
 input wire PreCharge,
 input clk					//PreCharge	GPIO pin 32
 );
@@ -51,10 +52,10 @@ input clk					//PreCharge	GPIO pin 32
 assign io_oeb = 38'b11111111_00000000_1111111111_11_11_1_1_0_11_10_1;
 assign user_irq = 3'b000;	// Unused
 
-wire [31:0] DataIn;
+wire [31:0] SRAM_In;
 			
-wire [1023:0] WL;
-wire [31:0] DataOut;
+wire [1023:0] WL;		///////////////////////////changed 1023 to 31 if 32 by 32 sram
+wire [31:0] SRAM_Out;
 
 
 
@@ -65,30 +66,27 @@ wire [31:0] DataOut;
 
 // BANK 01 WORDLINE Decoder
 BankWordDecoder wordDecoder_Bank01 (
-	`ifdef USE_POWER_PINS
-    		.vccd1(vccd1),	// User area 1 1.8V supply
-    		.vssd1(vssd1),	// User area 1 digital ground
-	`endif
 	.clk(clk),
 	.sel(Word_Select),
+	.WL_enable(WL_enable),
 	.address(WL)
 );
 
 //DATA OUT MUX! this mux takes 4 32bit values from the 4 memory banks, and mux's the output down to a single byte ready for the output pins
-FourBanksMux Data_out_Mux(
-		.Bank01_Reading(DataOut),
-		.Bank02_Reading(DataOut),	//redundancy for now
-		.Bank03_Reading(DataOut),	//redundancy for now
-		.Bank04_Reading(DataOut),	//redundancy for now
-		.bank_sel(Bank_Select),
+OneBankMux Data_out_Mux(
+		.clk(clk),
+		.read_enable(ReadEnable),
+		.Bank01_Reading(SRAM_Out),	
 		.byte_sel(Byte_Select),
                 .data_out(Data_Out)
 );
 
 data_in_decoder DataIn_Decoder(
+	.clk(clk),
+	.write_enable(WriteEnable),
 	.data_in(Data_In),
 	.sel(Byte_Select),
-	.data_out(DataIn)
+	.data_out(SRAM_In)
 );
 
 
@@ -97,7 +95,7 @@ data_in_decoder DataIn_Decoder(
 //BANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANKBANK
 
 //Bank01 SRAM Block
-full_sram bank01(
+full_sram bank01(      
 	
 	`ifdef USE_POWER_PINS
     		.vccd1(vccd1),	// User area 1 1.8V supply
@@ -108,72 +106,72 @@ full_sram bank01(
 .readen(ReadEnable),
 .writeen(WriteEnable),
 
-.DataIn0(DataIn [0]),
-.DataIn1(DataIn [1]),
-.DataIn2(DataIn [2]),
-.DataIn3(DataIn [3]),
-.DataIn4(DataIn [4]),
-.DataIn5(DataIn [5]),
-.DataIn6(DataIn [6]),
-.DataIn7(DataIn [7]),
-.DataIn8(DataIn [8]),
-.DataIn9(DataIn [9]),
-.DataIn10(DataIn [10]),
-.DataIn11(DataIn [11]),
-.DataIn12(DataIn [12]),
-.DataIn13(DataIn [13]),
-.DataIn14(DataIn [14]),
-.DataIn15(DataIn [15]),
-.DataIn16(DataIn [16]),
-.DataIn17(DataIn [17]),
-.DataIn18(DataIn [18]),
-.DataIn19(DataIn [19]),
-.DataIn20(DataIn [20]),
-.DataIn21(DataIn [21]),
-.DataIn22(DataIn [22]),
-.DataIn23(DataIn [23]),
-.DataIn24(DataIn [24]),
-.DataIn25(DataIn [25]),
-.DataIn26(DataIn [26]),
-.DataIn27(DataIn [27]),
-.DataIn28(DataIn [28]),
-.DataIn29(DataIn [29]),
-.DataIn30(DataIn [30]),
-.DataIn31(DataIn [31]),
+.DataIn0(SRAM_In [0]),
+.DataIn1(SRAM_In [1]),
+.DataIn2(SRAM_In [2]),
+.DataIn3(SRAM_In [3]),
+.DataIn4(SRAM_In [4]),
+.DataIn5(SRAM_In [5]),
+.DataIn6(SRAM_In [6]),
+.DataIn7(SRAM_In [7]),
+.DataIn8(SRAM_In [8]),
+.DataIn9(SRAM_In [9]),
+.DataIn10(SRAM_In [10]),
+.DataIn11(SRAM_In [11]),
+.DataIn12(SRAM_In [12]),
+.DataIn13(SRAM_In [13]),
+.DataIn14(SRAM_In [14]),
+.DataIn15(SRAM_In [15]),
+.DataIn16(SRAM_In [16]),
+.DataIn17(SRAM_In [17]),
+.DataIn18(SRAM_In [18]),
+.DataIn19(SRAM_In [19]),
+.DataIn20(SRAM_In [20]),
+.DataIn21(SRAM_In [21]),
+.DataIn22(SRAM_In [22]),
+.DataIn23(SRAM_In [23]),
+.DataIn24(SRAM_In [24]),
+.DataIn25(SRAM_In [25]),
+.DataIn26(SRAM_In [26]),
+.DataIn27(SRAM_In [27]),
+.DataIn28(SRAM_In [28]),
+.DataIn29(SRAM_In [29]),
+.DataIn30(SRAM_In [30]),
+.DataIn31(SRAM_In [31]),
 
 
-.DataOut0(DataOut [0]),
-.DataOut1(DataOut [1]),
-.DataOut2(DataOut [2]),
-.DataOut3(DataOut [3]),
-.DataOut4(DataOut [4]),
-.DataOut5(DataOut [5]),
-.DataOut6(DataOut [6]),
-.DataOut7(DataOut [7]),
-.DataOut8(DataOut [8]),
-.DataOut9(DataOut [9]),
-.DataOut10(DataOut [10]),
-.DataOut11(DataOut [11]),
-.DataOut12(DataOut [12]),
-.DataOut13(DataOut [13]),
-.DataOut14(DataOut [14]),
-.DataOut15(DataOut [15]),
-.DataOut16(DataOut [16]),
-.DataOut17(DataOut [17]),
-.DataOut18(DataOut [18]),
-.DataOut19(DataOut [19]),
-.DataOut20(DataOut [20]),
-.DataOut21(DataOut [21]),
-.DataOut22(DataOut [22]),
-.DataOut23(DataOut [23]),
-.DataOut24(DataOut [24]),
-.DataOut25(DataOut [25]),
-.DataOut26(DataOut [26]),
-.DataOut27(DataOut [27]),
-.DataOut28(DataOut [28]),
-.DataOut29(DataOut [29]),
-.DataOut30(DataOut [30]),
-.DataOut31(DataOut [31]),
+.DataOut0(SRAM_Out [0]),
+.DataOut1(SRAM_Out [1]),
+.DataOut2(SRAM_Out [2]),
+.DataOut3(SRAM_Out [3]),
+.DataOut4(SRAM_Out [4]),
+.DataOut5(SRAM_Out [5]),
+.DataOut6(SRAM_Out [6]),
+.DataOut7(SRAM_Out [7]),
+.DataOut8(SRAM_Out [8]),
+.DataOut9(SRAM_Out [9]),
+.DataOut10(SRAM_Out [10]),
+.DataOut11(SRAM_Out [11]),
+.DataOut12(SRAM_Out [12]),
+.DataOut13(SRAM_Out [13]),
+.DataOut14(SRAM_Out [14]),
+.DataOut15(SRAM_Out [15]),
+.DataOut16(SRAM_Out [16]),
+.DataOut17(SRAM_Out [17]),
+.DataOut18(SRAM_Out [18]),
+.DataOut19(SRAM_Out [19]),
+.DataOut20(SRAM_Out [20]),
+.DataOut21(SRAM_Out [21]),
+.DataOut22(SRAM_Out [22]),
+.DataOut23(SRAM_Out [23]),
+.DataOut24(SRAM_Out [24]),
+.DataOut25(SRAM_Out [25]),
+.DataOut26(SRAM_Out [26]),
+.DataOut27(SRAM_Out [27]),
+.DataOut28(SRAM_Out [28]),
+.DataOut29(SRAM_Out [29]),
+.DataOut30(SRAM_Out [30]),
+.DataOut31(SRAM_Out [31]),
 
 
 .WL0(WL [0]),
