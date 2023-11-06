@@ -34,22 +34,22 @@ module user_proj_IMPACT_HEAD (
     inout vssd1,	// User area 1 digital ground
 `endif
 
-output [37:0] io_oeb,
+output [32:0] io_oeb,
     // IRQ
 output wire [2:0] user_irq,
-input wire [7:0] Data_In,				//SRAM byte input		GPIO pins 0-7
-output wire [7:0] Data_Out, 				//SRAM byte output		GPIO pins 8-15
-input wire [9:0] Word_Select,				/////////////////////////////////////changed 9 to 4///////////////////////////
-//input wire [1:0] Bank_Select, 				//Select SRAM Bank		GPIO pins 26 & 27
-input wire [1:0] Byte_Select, 				//Select Byte from Word		GPIO pins 28 & 29
-input wire WriteEnable,					//SRAM Write Enable signal	GPIO pin 30
-input wire ReadEnable,
-input wire WL_enable,					//SRAM Read Enable Signal	GPIO pin 31
-input wire PreCharge,
-input clk					//PreCharge	GPIO pin 32
+input wire [7:0] Data_In,				//SRAM byte input		GPIO pins 5-12
+output wire [7:0] Data_Out, 				//SRAM byte output		GPIO pins 13-20
+input wire [9:0] Word_Select,				//SRAM word Select		GPIO pins 21 - 30
+input wire [1:0] Byte_Select, 				//Select Byte from Word		GPIO pins 31 & 32
+input wire WriteEnable,					//SRAM Write Enable signal	GPIO pin 33
+input wire ReadEnable,					//				GPIO pin 34
+input wire WL_enable,					//SRAM Read Enable Signal	GPIO pin 35
+input wire PreCharge,					//				GPIO pin 36
+input clk						//PreCharge			GPIO pin 37
 );
 
-assign io_oeb = 38'b11111111_00000000_1111111111_11_11_1_1_0_11_10_1;
+//assign io_oeb = 38'b11111111_00000000_1111111111_11_1_1_1_1_1;
+assign io_oeb = 33'b1_1_1_1_1_11_1111111111_00000000_11111111;
 assign user_irq = 3'b000;	// Unused
 
 wire [31:0] SRAM_In;

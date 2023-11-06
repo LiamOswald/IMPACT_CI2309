@@ -96,19 +96,17 @@ user_proj_IMPACT_HEAD mprj (
 `endif
 
     // IO Pads
-    .io_oeb(io_oeb),
-     
-    .Data_In(io_in[7:0]),			//SRAM byte input		GPIO pins 0-7
-    .Data_Out(io_out[15:8]), 			//SRAM byte output		GPIO pins 8-15
-    .Word_Select(io_in[25:16]), 		//Select word from SRAM bank	GPIO pins 16-25
-    .Bank_Select(io_in[27:26]),			//Select SRAM Bank		GPIO pins 26 & 27
-    .Byte_Select(io_in[29:28]),			//Select Byte from Word		GPIO pins 28 & 29
-    .WriteEnable(io_in[30]),			//SRAM Write Enable signal	GPIO pin 30
-    .ReadEnable(io_in[31]),			//SRAM Read Enable Signal	GPIO pin 31
-    //.AnalogVCC(analog_io),			//VCC control for Bank #4	GPIO pin 32
-    //.Truncation_Select(io_in[36:33]),		//Truncation controller		GPIO Pins 33-36
-    .clk(io_in[37])			//User Project Clock 		GPIO Pin 37	
-
+    .io_oeb(io_oeb [37:5]),
+    .user_irq(user_irq), 
+    .Data_In(io_in[12:5]),			//SRAM byte input		GPIO pins 5-12
+    .Data_Out(io_out[20:13]), 			//SRAM byte output		GPIO pins 13-20
+    .Word_Select(io_in[21:30]), 		//Select word from SRAM bank	GPIO pins 21-30
+    .Byte_Select(io_in[31:32]),			//Select Byte from Word		GPIO pins 31 & 32
+    .WriteEnable(io_in[33]),			//SRAM Write Enable signal	GPIO pin 33
+    .ReadEnable(io_in[34]),			//SRAM Read Enable Signal	GPIO pin 34
+    .WL_enable(io_in[35]),			//SRAM world line enable 	GPIO pin 35
+    .PreCharge(io_in[36]),			//SRAM precharge enable bar	GPIO pin 36
+    .clk(io_in[37]),				//User Project Clock 		GPIO Pin 37	
 
 );
 
